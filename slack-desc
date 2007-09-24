@@ -1,0 +1,11 @@
+libdv: LibDV (A Quasar DV Codec Library)
+libdv:
+libdv: The Quasar DV Codec (libdv) is a software decoder for DV format
+libdv: video, as defined by the IEC 61834 and SMPTE 314M standards. DV is
+libdv: the encoding format used by consumer-grade digital camcorders.
+libdv:
+libdv:
+libdv:
+libdv:
+libdv: Packaged by Georgi D. Sotirov <gdsotirov@dir.bg>
+libdv:
