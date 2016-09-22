@@ -17,14 +17,14 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 # 
-# $Id: libdv.SlackBuild,v 1.5 2016/09/18 09:48:15 gsotirov Exp $
+# $Id: libdv.SlackBuild,v 1.6 2016/09/22 17:36:24 gsotirov Exp $
 #
 
 . ../../slack-package.conf
 
 NAME=libdv
 VERSION=1.0.0
-ARCH=${ARCH:-i486}
+ARCH=${ARCH:-i586}
 BUILD=${BUILD:-1}
 
 TMP=${TMP:-/tmp}
@@ -55,17 +55,20 @@ cd ${NAME}-${VERSION}
 fix_source
 
 # Configure
-CFLAGS=$SLKCFLAGS \
-CXXFLAGS=$SLKCFLAGS \
-./configure --build=$ARCH-slackware-linux \
-            --host=$ARCH-slackware-linux \
+CFLAGS="$SLKCFLAGS -std=gnu89" \
+CXXFLAGS="$SLKCFLAGS -std=gnu89" \
+./configure --build=${ARCH}-slackware-linux \
+            --host=${ARCH}-slackware-linux \
             --prefix=/usr \
             --sysconfdir=/etc \
             --libdir=/usr/lib${LIBDIRSUFFIX} \
             --mandir=/usr/man \
             --enable-shared=yes \
             --enable-static=no \
-            --enable-sdl || exit 4
+            --enable-sdl \
+            --enable-gtk \
+            --enable-xv \
+            --without-debug || exit 4
 
 # Build & install
 make -j4 || exit 5
